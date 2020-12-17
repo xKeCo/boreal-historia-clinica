@@ -1,0 +1,33 @@
+.login {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.login-image {
+  max-width: 380px;
+  max-height: 380px;
+  margin: 0 auto;
+}
+.login-image img {
+  width: 100%;
+}
+
+.login-form {
+  margin: 0 1.5rem;
+}
+
+.login-image-container {
+  width: 100%;
+}
+
+.LoginRegister__errors {
+  color: rgb(255, 102, 102);
+  margin-top: 2em;
+}
+
+.LoginRegister__errors--li {
+  list-style-position: inside;
+  margin-top: 1em;
+}

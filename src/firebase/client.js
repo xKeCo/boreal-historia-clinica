@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
 
 const firebaseConfig = firebase.initializeApp({
   apiKey: "AIzaSyCmwXdtrwgsr84FWjhV32CENoUI1g_C7EQ",
@@ -19,7 +20,7 @@ const mapUserFromFirebaseAuthToUser = (user) => {
   };
 };
 
-export const database = firebaseConfig.firestore;
+export const database = firebaseConfig.firestore();
 
 export const onAuthStateChanged = (onChange) => {
   return firebase.auth().onAuthStateChanged((user) => {

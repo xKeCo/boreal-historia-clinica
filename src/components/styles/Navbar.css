@@ -1,0 +1,32 @@
+.menu-usuario {
+  background-color: unset !important;
+  border: unset !important;
+  padding: unset !important;
+  box-shadow: unset !important;
+  /* color: black !important; */
+}
+
+.menu-usuario:hover {
+  background-color: unset !important;
+  border-color: unset !important;
+  box-shadow: unset !important;
+}
+
+.dropdown-1 {
+  padding: 0.25rem 1.5rem;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.items-dropdown {
+  color: black;
+  transition: opacity 0.3s ease;
+}
+
+.items-dropdown:hover {
+  color: black;
+}
+
+.dropdown:active {
+  background-color: unset !important;
+}

@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "../components/Auth";
-import Login from "../pages/Login";
+// Pages
+import Login from "../pages/LoginPage";
+import Home from "../pages/Home";
 import PageNotFound from "../pages/PageNotFound";
 
 export default function App() {
@@ -11,6 +13,7 @@ export default function App() {
         <Switch>
           {/* <Route exact path="/home" component={Home} /> */}
           <Route exact path="/" component={Login} />
+          <Route exact path="/inicio" component={Home} />
           <Route component={PageNotFound} />
         </Switch>
       </BrowserRouter>
