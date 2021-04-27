@@ -2,15 +2,22 @@ import React from "react";
 // Material UI Components
 import { CircularProgress } from "@material-ui/core/";
 // Estilos CSS
-import "./styles/Loader.css";
+import "./Loader.css";
 
-export default function Loader() {
+export const Loader = ({ size }) => {
   return (
     <div className="Loader">
-      <CircularProgress size="40px" />
+      <CircularProgress size={size} />
     </div>
   );
-}
+};
+export const FullLoader = ({ size }) => {
+  return (
+    <div className="FullLoader">
+      <CircularProgress size={size} />
+    </div>
+  );
+};
 
 // import React from "react";
 // import { makeStyles } from "@material-ui/core/styles";

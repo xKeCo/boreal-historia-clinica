@@ -1,0 +1,20 @@
+/* Loader */
+.Loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  /* height: 100vh; */
+}
+.FullLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.MuiCircularProgress-colorPrimary {
+  color: black !important;
+}
+
+/* Loader END */

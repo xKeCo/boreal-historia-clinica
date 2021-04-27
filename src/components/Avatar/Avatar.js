@@ -1,6 +1,6 @@
 import React from "react";
 // Estilos CSS
-import "./styles/Avatar.css";
+import "./Avatar.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 export default function Avatar({ alt, src, text }) {

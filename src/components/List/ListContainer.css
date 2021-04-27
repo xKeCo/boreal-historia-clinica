@@ -1,0 +1,28 @@
+.ListContainer {
+  display: flex;
+  padding: 0.875em 7%;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+  width: 100%;
+}
+.ListContainer-Details {
+  border: 0.7px solid #969696;
+  border-radius: 5px;
+  width: 100%;
+  padding: 9px;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.AñadirPaciente-container {
+  width: 100%;
+  text-align: center;
+}
+
+.AñadirPaciente-button {
+  margin: 0 auto;
+}
