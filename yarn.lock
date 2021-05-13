@@ -6799,6 +6799,7 @@
   "version" "2.0.0"
 
 "is-string@^1.0.5":
+<<<<<<< HEAD
   "integrity" "sha512-2gdzbKUuqtQ3lYNrUTQYoClPhm7oQu4UdpSZMp1/DGgkHBT8E2Z1l0yMdb6D4zNAxwDiMv8MdulKROJGNl0Q0w=="
   "resolved" "https://registry.npmjs.org/is-string/-/is-string-1.0.6.tgz"
   "version" "1.0.6"
@@ -6807,6 +6808,16 @@
   "integrity" "sha512-C/CPBqKWnvdcxqIARxyOh4v1UUEOCHpgDa0WYgpKDFMszcrPcffg5uhwSgPCLD2WWxmq6isisz87tzT01tuGhg=="
   "resolved" "https://registry.npmjs.org/is-symbol/-/is-symbol-1.0.4.tgz"
   "version" "1.0.4"
+=======
+  "integrity" "sha512-buY6VNRjhQMiF1qWDouloZlQbRhDPCebwxSjxMjxgemYT46YMd2NR0/H+fBhEfWX4A/w9TBJ+ol+okqJKFE6vQ=="
+  "resolved" "https://registry.npmjs.org/is-string/-/is-string-1.0.5.tgz"
+  "version" "1.0.5"
+
+"is-symbol@^1.0.2":
+  "integrity" "sha512-OwijhaRSgqvhm/0ZdAcXNZt9lYdKFpcRDT5ULUuYXPoT794UNOdU+gpT6Rzo7b4V2HUl/op6GqY894AZwv9faQ=="
+  "resolved" "https://registry.npmjs.org/is-symbol/-/is-symbol-1.0.3.tgz"
+  "version" "1.0.3"
+>>>>>>> 7157e9bd162392a3b01a7e1eb8f21ccaa62f905e
   dependencies:
     "has-symbols" "^1.0.2"
 
@@ -7785,7 +7796,11 @@
   "resolved" "https://registry.npmjs.org/lodash.uniq/-/lodash.uniq-4.5.0.tgz"
   "version" "4.5.0"
 
+<<<<<<< HEAD
 "lodash@^4.17.11", "lodash@^4.17.14", "lodash@^4.17.15", "lodash@^4.17.19", "lodash@^4.17.20", "lodash@^4.17.21", "lodash@^4.17.5", "lodash@^4.7.0", "lodash@>=3.5 <5":
+=======
+"lodash@^4.17.11", "lodash@^4.17.14", "lodash@^4.17.15", "lodash@^4.17.19", "lodash@^4.17.20", "lodash@^4.17.5", "lodash@>=3.5 <5":
+>>>>>>> 7157e9bd162392a3b01a7e1eb8f21ccaa62f905e
   "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
   "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   "version" "4.17.21"

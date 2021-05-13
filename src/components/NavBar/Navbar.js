@@ -33,7 +33,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
+<<<<<<< HEAD
   const { userData, setUserData } = useAuth();
+=======
+  const { userData, loadingUser, setUserData } = useAuth();
+>>>>>>> 7157e9bd162392a3b01a7e1eb8f21ccaa62f905e
 
   const logOut = () => {
     auth.signOut().then(() => {
