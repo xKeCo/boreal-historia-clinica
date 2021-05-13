@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
-import firebaseConfig from "../firebase/client";
-import { database } from "../firebase/client";
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth, database } from "../firebase/client";
 import md5 from "md5";
 
-export const AuthContext = React.createContext();
+export const Context = createContext();
 
-export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [pending, setPending] = useState(true);
+export const useAuth = () => useContext(Context);
+
+export const useFirebaseAuth = () => {
+  const signout = () => auth.signOut();
+
+  return { signout };
+};
+
+export const AuthContextProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loadingUser, setLoadingUser] = useState(true);
   const [userData, setUserData] = useState(null);
 
   const getUserData = async (user) => {
@@ -25,34 +32,30 @@ export const AuthProvider = ({ children }) => {
         };
         await database.collection("users").doc(user.uid).set(newUser, { merge: true });
         setUserData(newUser);
+        setLoadingUser(false);
       }
     } catch (error) {
       alert(error);
     }
   };
-  useEffect(() => {
-    firebaseConfig.auth().onAuthStateChanged((user) => {
-      setCurrentUser(user);
-      if (user && !userData) {
-        getUserData(user);
-      }
-      setPending(false);
-    });
-  }, [userData]);
 
-  if (pending) {
-    return null;
-  }
+  useEffect(() => {
+    const handleUser = (user) => {
+      if (user) {
+        setUser(user);
+        getUserData(user);
+      } else {
+        setUser(false);
+        setLoadingUser(false);
+      }
+    };
+    const unsubscribe = auth.onAuthStateChanged(handleUser);
+    return () => unsubscribe();
+  }, []);
 
   return (
-    <AuthContext.Provider
-      value={{
-        currentUser,
-        userData,
-        setUserData,
-      }}
-    >
+    <Context.Provider value={{ user, loadingUser, userData, setUserData }}>
       {children}
-    </AuthContext.Provider>
+    </Context.Provider>
   );
 };

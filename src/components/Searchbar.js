@@ -3,6 +3,7 @@ import React from "react";
 import { Paper, IconButton, InputBase, Divider, makeStyles } from "@material-ui/core";
 // Iconos Material UI
 import { Search as SearchIcon, Tune as TuneIcon } from "@material-ui/icons";
+import { database } from "../firebase/client";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,8 +31,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Searchbar() {
+export default function Searchbar({ setData }) {
   const classes = useStyles();
+
+  const handleInput = async (e) => {
+    const users = await database
+      .collection("clientes")
+      .limit(10)
+      .where("nombreBusqueda", ">=", e.target.value.trim().toLowerCase())
+      .where("nombreBusqueda", "<=", e.target.value.trim().toLowerCase() + "\uf8ff")
+      .get();
+
+    const docs = [];
+
+    users.forEach((doc) => {
+      docs.push({ ...doc.data(), id: doc.id });
+    });
+
+    setData(docs);
+  };
+
   return (
     <div className={classes.container}>
       <Paper component="form" className={classes.root}>
@@ -39,6 +58,7 @@ export default function Searchbar() {
           className={classes.input}
           placeholder="Buscar Paciente"
           inputProps={{ "aria-label": "search google maps" }}
+          onChange={handleInput}
         />
         <IconButton color="primary" className={classes.iconButton} aria-label="directions">
           <TuneIcon />

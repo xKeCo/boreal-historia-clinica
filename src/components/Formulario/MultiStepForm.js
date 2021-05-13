@@ -11,6 +11,17 @@ const defaultData = {
   email: "",
   genero: "",
   tipoSangre: "",
+  direccion: "",
+  telefono1: "",
+  telefono2: "",
+  estadoCivil: "",
+  EPS: "",
+  consultaMedico: "",
+  tratamientoMedico: "",
+  radiografias: "",
+  numeroEmergencia: "",
+  motivoConsulta: "",
+  consentimiento: "No",
 };
 
 const steps = [
@@ -38,11 +49,7 @@ export const MultiStepForm = () => {
       return <Consentimiento {...props} />;
     case "Revision":
       return <Revision {...props} />;
+    default:
+      return "Ha ocurrido un error, intentalo despues";
   }
-
-  return (
-    <>
-      <h1>Holis</h1>
-    </>
-  );
 };

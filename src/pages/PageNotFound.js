@@ -18,7 +18,7 @@ export default function Home() {
         </div>
         <div className="details-container">
           <h3>Pagina no encontrada!</h3>
-          <Link to="/inicio" className="text-decoration-none text-light btn btn-danger mt-3">
+          <Link to="/" className="text-decoration-none text-light btn btn-danger mt-3">
             Volver al inicio
           </Link>
         </div>

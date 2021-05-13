@@ -1,32 +1,35 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Redirect } from "react-router-dom";
+import React, {
+  // useState,
+  useEffect,
+} from "react";
 import Navbar from "../components/NavBar/Navbar";
-import { FullLoader } from "../components/Loader/Loader";
-import { AuthContext } from "../components/Auth";
+import { useAuth } from "../components/Auth";
+// import { FullLoader } from "../components/Loader/Loader";
 import ListContainer from "../components/List/ListContainer";
+import Login from "../components/Login/Login";
+import { FullLoader } from "../components/Loader/Loader";
 
 export default function Home() {
-  const { currentUser, userData } = useContext(AuthContext);
-  const [loading, setLoading] = useState(false);
+  const { userData, loadingUser } = useAuth();
+
+  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     document.title = "Boreal - Inicio";
   }, []);
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 500);
-
-  if (!currentUser) {
-    return <Redirect to="/" />;
-  }
-
   return (
     <>
-      <div>
-        <Navbar />
-        <ListContainer />
-      </div>
+      {userData ? (
+        <>
+          <Navbar />
+          <ListContainer />
+        </>
+      ) : loadingUser ? (
+        <FullLoader />
+      ) : (
+        <Login />
+      )}
     </>
   );
 }
