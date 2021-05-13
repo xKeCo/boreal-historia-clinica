@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { TextField } from "@material-ui/core";
-import { AuthContext } from "../Auth";
-import firebaseConfig from "../../firebase/client";
+import { auth } from "../../firebase/client";
+import { useAuth } from "../Auth";
 import { Loader } from "../Loader/Loader";
 import "./Login.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -15,7 +15,7 @@ export default function Login() {
   const [form, setValues] = useState({});
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const { currentUser, userData } = useContext(AuthContext);
+  const { user } = useAuth();
 
   useEffect(() => {
     document.title = "Boreal - Login";
@@ -33,28 +33,26 @@ export default function Login() {
     setErrors({});
     setLoading(true);
     document.querySelectorAll("input").forEach((input) => (input.disabled = true));
-    firebaseConfig
-      .auth()
-      .signInWithEmailAndPassword(`${form.email}@gmail.com`, form.password)
-      .catch((err) => {
-        if (err.code === "auth/user-not-found" || err.code === "auth/wrong-password") {
-          setErrors({
-            incorrect: true,
-          });
-          setLoading(false);
-        } else {
-          setErrors({
-            unexpected: true,
-          });
-          setLoading(false);
-        }
-      });
+
+    auth.signInWithEmailAndPassword(`${form.email}@gmail.com`, form.password).catch((err) => {
+      if (err.code === "auth/user-not-found" || err.code === "auth/wrong-password") {
+        setErrors({
+          incorrect: true,
+        });
+        setLoading(false);
+      } else {
+        setErrors({
+          unexpected: true,
+        });
+        setLoading(false);
+      }
+    });
     document.querySelectorAll("input").forEach((input) => (input.disabled = false));
     setLoading(true);
   };
 
-  if (currentUser) {
-    return <Redirect to="/inicio" />;
+  if (user) {
+    return <Redirect to="/" />;
   }
 
   return (
