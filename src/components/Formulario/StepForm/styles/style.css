@@ -5,3 +5,14 @@
 button {
   outline: none !important;
 }
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.select-options-container {
+  display: flex;
+  flex-wrap: wrap;
+}

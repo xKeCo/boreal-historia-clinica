@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 4,
   },
   container: {
-    padding: "0.875em 7%",
+    padding: "1.875em 17%",
   },
 }));
 

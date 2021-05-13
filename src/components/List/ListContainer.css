@@ -1,6 +1,6 @@
 .ListContainer {
   display: flex;
-  padding: 0.875em 7%;
+  padding: 0.875em 20%;
   justify-content: space-between;
   align-items: center;
   height: 62px;
@@ -25,4 +25,10 @@
 
 .AñadirPaciente-button {
   margin: 0 auto;
+}
+
+@media screen and (max-width: 1500px) {
+  .ListContainer {
+    padding: 0.875em 14%;
+  }
 }
