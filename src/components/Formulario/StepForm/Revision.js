@@ -34,6 +34,7 @@ export default function Revision({ formData, navigation }) {
   const { nombreCompleto, edad, email, genero, tipoSangre, motivoConsulta, consentimiento } =
     formData;
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [
     // loading,
     setLoading,
@@ -42,6 +43,10 @@ export default function Revision({ formData, navigation }) {
     // errors,
     setErrors,
   ] = useState(null);
+=======
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
+>>>>>>> 7157e9bd162392a3b01a7e1eb8f21ccaa62f905e
 =======
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
