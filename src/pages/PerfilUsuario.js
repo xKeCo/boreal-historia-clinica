@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
-=======
-import React, { useEffect, useContext, useState } from "react";
->>>>>>> 7157e9bd162392a3b01a7e1eb8f21ccaa62f905e
-=======
-import React, { useEffect, useContext, useState } from "react";
->>>>>>> 7157e9bd162392a3b01a7e1eb8f21ccaa62f905e
 import {
   Redirect,
   Link,
@@ -31,27 +23,12 @@ import {
   Divider,
   Button,
   Drawer,
-<<<<<<< HEAD
-<<<<<<< HEAD
   // Breadcrumbs,
   // Typography,
 } from "@material-ui/core";
 // Material UI Icons
 import {
-  // NavigateNext as NavigateNextIcon,
-=======
-=======
->>>>>>> 7157e9bd162392a3b01a7e1eb8f21ccaa62f905e
-  Breadcrumbs,
-  Typography,
-} from "@material-ui/core";
-// Material UI Icons
-import {
   NavigateNext as NavigateNextIcon,
-<<<<<<< HEAD
->>>>>>> 7157e9bd162392a3b01a7e1eb8f21ccaa62f905e
-=======
->>>>>>> 7157e9bd162392a3b01a7e1eb8f21ccaa62f905e
   ExitToApp as ExitToAppIcon,
   Edit as EditIcon,
   MoreHoriz as MoreHorizIcon,
