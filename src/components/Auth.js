@@ -44,6 +44,7 @@ export const AuthContextProvider = ({ children }) => {
       if (user) {
         setUser(user);
         getUserData(user);
+        setLoadingUser(true);
       } else {
         setUser(false);
         setLoadingUser(false);
