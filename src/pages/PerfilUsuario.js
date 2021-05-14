@@ -5,6 +5,7 @@ import {
   // useHistory,
 } from "react-router-dom";
 // Estilos CSS
+import "./styles/PerfilUsuario.css";
 import "bootstrap/dist/css/bootstrap.css";
 // Conexion Firebase Database
 import { database } from "../firebase/client";
@@ -28,11 +29,11 @@ import {
 } from "@material-ui/core";
 // Material UI Icons
 import {
-  // NavigateNext as NavigateNextIcon,
+  Favorite as FavoriteIcon,
+  Assignment as AssignmentIcon,
   ExitToApp as ExitToAppIcon,
   Edit as EditIcon,
-  MoreHoriz as MoreHorizIcon,
-  AddCircle as AddCircleIcon,
+  MoreVert as MoreVertIcon,
   PlaylistAdd as PlaylistAddIcon,
 } from "@material-ui/icons/";
 // Material UI Styles
@@ -97,14 +98,6 @@ export default function PerfilUsuario(props) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className="ml-3">
-        <Link to={`/crearActividad/${id}`} className="nav-item text-decoration-none items-dropdown">
-          <ListItem className="sideMenu-Item-emprendedor">
-            <ListItemIcon>
-              <AddCircleIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Crear Actividad"} />
-          </ListItem>
-        </Link>
         <Link to="/" className="nav-item text-decoration-none items-dropdown">
           <ListItem className="sideMenu-Item-emprendedor">
             <ListItemIcon>
@@ -117,8 +110,6 @@ export default function PerfilUsuario(props) {
     </div>
   );
   // Drawer - Menu desplazable END
-
-  // const history = useHistory();
 
   // Funcion para sacar a un usuario que no tiene la sesión activa
   if (!userData) {
@@ -141,9 +132,9 @@ export default function PerfilUsuario(props) {
             <>
               {
                 <>
-                  <div className="todo-revisarautodiagnostico_container">
-                    <h3 className="text-center mt-4 font-weight-bold mb-4">
-                      Perfil del emprendedor
+                  <div className="todo-revisarautodiagnostico_container ">
+                    <h3 className="text-center mt-5 font-weight-bold mb-4">
+                      {Data.nombreCompleto}
                     </h3>
                     <div className="datos-usuario_container">
                       <div className="UserImage_container">
@@ -173,37 +164,36 @@ export default function PerfilUsuario(props) {
                         )}
                       </div>
                       <div className="UserInformation_container">
-                        <List disablePadding className="RevisarAutodiagnostico-List">
-                          <ListItem alignItems="flex-start">
-                            <ListItemText
-                              primary="Nombre del emprendedor"
-                              secondary={Data.nombreCompleto}
-                            />
-                          </ListItem>
-                          <Divider />
-
+                        <List disablePadding className="RevisarAutodiagnostico-List mb-3">
                           <ListItem>
                             <ListItemText primary="Correo del emprendedor" secondary={Data.email} />
                           </ListItem>
                           <Divider />
 
                           <ListItem>
-                            <ListItemText
-                              primary="Tel&eacute;fono del emprendedor"
-                              secondary={Data.telefono}
-                            />
+                            <ListItemText primary="Direcci&oacute;n" secondary={Data.direccion} />
                           </ListItem>
                           <Divider />
 
                           <ListItem>
-                            <ListItemText primary="Ciudad" secondary={Data.ciudad} />
+                            <ListItemText primary="EPS" secondary={Data.EPS} />
+                          </ListItem>
+                          <Divider />
+
+                          <ListItem>
+                            <ListItemText primary="Tipo de sangre" secondary={Data.tipoSangre} />
+                          </ListItem>
+                          <Divider />
+
+                          <ListItem>
+                            <ListItemText primary="Tel&eacute;fono 1" secondary={Data.telefono1} />
                           </ListItem>
                           <Divider />
 
                           <ListItem>
                             <ListItemText
-                              primary="V&iacute;nculo con la universidad"
-                              secondary={Data.vinculoUni}
+                              primary="Tel&eacute;fono emergencia"
+                              secondary={Data.numeroEmergencia}
                             />
                           </ListItem>
                           <Divider />
@@ -211,7 +201,7 @@ export default function PerfilUsuario(props) {
 
                         <List disablePadding className="RevisarAutodiagnostico-List">
                           <ListItem>
-                            <ListItemText primary="Cedula" secondary={Data.cedula} />
+                            <ListItemText primary="Cedula" secondary={Data.numeroDocumento} />
                           </ListItem>
 
                           <Divider />
@@ -220,104 +210,96 @@ export default function PerfilUsuario(props) {
                           </ListItem>
                           <Divider />
                           <ListItem>
-                            <ListItemText
-                              primary="Fecha de nacimiento"
-                              secondary={Data.nacimiento}
-                            />
+                            <ListItemText primary="Edad" secondary={`${Data.edad} años`} />
                           </ListItem>
                           <Divider />
                           <ListItem>
-                            <ListItemText primary="Direcci&oacute;n" secondary={Data.direccion} />
+                            <ListItemText primary="Estatura" secondary={`${Data.estatura} cm`} />
                           </ListItem>
                           <Divider />
-                          {Data.programa !== "" && (
-                            <ListItem>
-                              <ListItemText
-                                primary="Programa acad&eacute;mico"
-                                secondary={Data.programa}
-                              />
-                            </ListItem>
-                          )}
-                          {Data.programa !== "" && <Divider />}
+
+                          <ListItem>
+                            <ListItemText primary="Tel&eacute;fono 2" secondary={Data.telefono2} />
+                          </ListItem>
+                          <Divider />
+
+                          <ListItem>
+                            <ListItemText primary="Estado civil" secondary={Data.estadoCivil} />
+                          </ListItem>
+                          <Divider />
                         </List>
                       </div>
-                      {Data.rol === "emprendedor" && Data.ruta_asignada && (
-                        <>
-                          <div className="FirstLogin_button_container ml-3 mr-3 mt-4">
-                            <div>
-                              <Link
-                                to={`/reporte/${id}`}
-                                className=" text-decoration-none items-dropdown"
-                              >
-                                <Button
-                                  type="input"
-                                  variant="contained"
-                                  className="button-0"
-                                  color="primary"
-                                >
-                                  Reporte de etapas
-                                </Button>
-                              </Link>
-                            </div>
-                          </div>
-                          <div className="FirstLogin_button_container mr-3 ml-3 mt-4">
-                            <div>
-                              <Link to="/home" className=" text-decoration-none items-dropdown">
-                                <Button
-                                  type="input"
-                                  variant="contained"
-                                  className="button-0"
-                                  color="primary"
-                                >
-                                  Actividades
-                                </Button>
-                              </Link>
-                            </div>
-                          </div>
-                        </>
-                      )}
-                      {userData.rol !== "emprendedor" &&
-                        Data.ruta_asignada &&
-                        Data.uID !== userData.uID && (
-                          <React.Fragment key={"bottom"}>
-                            <div className="FirstLogin_button_container ml-3 mr-3 mt-4">
-                              <div>
-                                <Button
-                                  variant="contained"
-                                  className="button-0"
-                                  color="primary"
-                                  endIcon={<MoreHorizIcon />}
-                                  onClick={toggleDrawer("bottom", true)}
-                                >
-                                  Acciones
-                                </Button>
-                              </div>
-                            </div>
-                            <Drawer
-                              anchor={"bottom"}
-                              open={state["bottom"]}
-                              onClose={toggleDrawer("bottom", false)}
-                            >
-                              {list("bottom")}
-                            </Drawer>
-                          </React.Fragment>
-                        )}
-                      {Data.uID === userData.uID && (
+                      <>
                         <div className="FirstLogin_button_container ml-3 mr-3 mt-4">
                           <div>
-                            <Link to="/home" className=" text-decoration-none items-dropdown">
+                            <Link
+                              to={`/reporte/${id}`}
+                              className=" text-decoration-none items-dropdown"
+                            >
                               <Button
+                                type="input"
                                 variant="contained"
                                 className="button-0"
                                 color="primary"
-                                endIcon={<EditIcon />}
+                                endIcon={<AssignmentIcon />}
                               >
-                                Editar Perfil
+                                Reporte
                               </Button>
                             </Link>
                           </div>
                         </div>
-                      )}
+                        <div className="FirstLogin_button_container mr-3 ml-3 mt-4">
+                          <div>
+                            <Link to="/home" className=" text-decoration-none items-dropdown">
+                              <Button
+                                type="input"
+                                variant="contained"
+                                className="button-0"
+                                color="primary"
+                                endIcon={<FavoriteIcon />}
+                              >
+                                Salud
+                              </Button>
+                            </Link>
+                          </div>
+                        </div>
+                      </>
+                      <React.Fragment key={"bottom"}>
+                        <div className="FirstLogin_button_container ml-3 mr-3 mt-4">
+                          <div>
+                            <Button
+                              variant="contained"
+                              className="button-0"
+                              color="primary"
+                              endIcon={<MoreVertIcon />}
+                              onClick={toggleDrawer("bottom", true)}
+                            >
+                              Acciones
+                            </Button>
+                          </div>
+                        </div>
+                        <Drawer
+                          anchor={"bottom"}
+                          open={state["bottom"]}
+                          onClose={toggleDrawer("bottom", false)}
+                        >
+                          {list("bottom")}
+                        </Drawer>
+                      </React.Fragment>
+                      <div className="FirstLogin_button_container ml-3 mr-3 mt-4">
+                        <div>
+                          <Link to="/" className=" text-decoration-none items-dropdown">
+                            <Button
+                              variant="contained"
+                              className="button-0"
+                              color="primary"
+                              endIcon={<EditIcon />}
+                            >
+                              Editar Perfil
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
 
                     <div className="Button-volver mt-4 mb-5 ">
@@ -327,9 +309,6 @@ export default function PerfilUsuario(props) {
                           color="secondary"
                           className="button-2"
                           startIcon={<ExitToAppIcon />}
-                          // onClick={() => {
-                          //   history.goBack();
-                          // }}
                         >
                           Volver
                         </Button>

@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   smallTextField: {
     marginRight: "1rem",
-    maxWidth: 110,
+    maxWidth: 115,
     width: "100%",
     marginTop: "1rem",
   },
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "0.6rem",
   },
   divContainer: {
-    marginRight: "1rem",
+    // marginRight: "1rem",
     maxWidth: 382,
     width: "100%",
     marginTop: "0.6rem",
@@ -85,7 +85,7 @@ export default function General({ formData, setForm, navigation }) {
   const [setChange] = useState("");
   const [afiliado, setAfiliado] = useState("SI");
   const [consulta, setConsulta] = useState("SI");
-  const [actualizadas, setActualizadas] = useState("SI");
+  const [actualizadas, setActualizadas] = useState("NO");
   const classes = useStyles();
 
   const handleChange = (event) => {
@@ -172,16 +172,21 @@ export default function General({ formData, setForm, navigation }) {
               defaultValue={edad}
               label="Edad"
               name="edad"
+              type="number"
               onChange={setForm}
               variant="outlined"
               inputProps={{
                 maxLength: 2,
+              }}
+              InputProps={{
+                endAdornment: <InputAdornment position="end">años</InputAdornment>,
               }}
             />
             <TextField
               className={classes.smallTextField}
               label="Estatura"
               name="estatura"
+              type="number"
               defaultValue={estatura}
               onChange={setForm}
               variant="outlined"
@@ -191,12 +196,14 @@ export default function General({ formData, setForm, navigation }) {
               InputProps={{
                 endAdornment: <InputAdornment position="end">cm</InputAdornment>,
               }}
+              required
             />
             <TextField
               className={classes.smallTextField}
               defaultValue={peso}
               label="Peso"
               name="peso"
+              type="number"
               onChange={setForm}
               variant="outlined"
               inputProps={{
@@ -205,6 +212,7 @@ export default function General({ formData, setForm, navigation }) {
               InputProps={{
                 endAdornment: <InputAdornment position="end">kg</InputAdornment>,
               }}
+              required
             />
             <TextField
               className="mr-3 mt-3"
@@ -214,6 +222,7 @@ export default function General({ formData, setForm, navigation }) {
               onChange={setForm}
               variant="outlined"
               type="email"
+              required
             />
             <TextField
               className="mr-3 mt-3"
@@ -222,6 +231,7 @@ export default function General({ formData, setForm, navigation }) {
               defaultValue={numeroDocumento}
               onChange={setForm}
               variant="outlined"
+              required
             />
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>Estado civil</InputLabel>
@@ -250,6 +260,7 @@ export default function General({ formData, setForm, navigation }) {
               variant="outlined"
               multiline
               rowsMax={2}
+              required
             />
 
             <TextField
@@ -259,10 +270,11 @@ export default function General({ formData, setForm, navigation }) {
               defaultValue={telefono1}
               onChange={setForm}
               variant="outlined"
+              required
             />
             <TextField
               className={classes.telTextField}
-              label="Telefono 2"
+              label="Telefono 2 (opcional)"
               name="telefono2"
               defaultValue={telefono2}
               onChange={setForm}
@@ -275,6 +287,7 @@ export default function General({ formData, setForm, navigation }) {
               defaultValue={numeroEmergencia}
               onChange={setForm}
               variant="outlined"
+              required
             />
           </div>
         </div>
@@ -377,8 +390,8 @@ export default function General({ formData, setForm, navigation }) {
                 onChange={(handleChange, setForm)}
                 value={tratamientoMedico}
               >
-                <MenuItem value={"Si"}>Si</MenuItem>
-                <MenuItem value={"No"}>No</MenuItem>
+                <MenuItem value={"SI"}>Si</MenuItem>
+                <MenuItem value={"NO"}>No</MenuItem>
               </Select>
             </FormControl>
           </div>
@@ -403,7 +416,10 @@ export default function General({ formData, setForm, navigation }) {
               !direccion ||
               !telefono1 ||
               !numeroEmergencia ||
-              !tratamientoMedico
+              !tratamientoMedico ||
+              (afiliado === "SI" && !EPS) ||
+              (actualizadas === "SI" && !radiografias) ||
+              (consulta === "SI" && !consultaMedica)
             }
           >
             continuar

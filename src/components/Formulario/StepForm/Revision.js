@@ -31,16 +31,43 @@ function Alert(props) {
 
 export default function Revision({ formData, navigation }) {
   const { go } = navigation;
-  const { nombreCompleto, edad, email, genero, tipoSangre, motivoConsulta, consentimiento } =
-    formData;
-  const [
-    // loading,
-    setLoading,
-  ] = useState(false);
-  const [
-    // errors,
-    setErrors,
-  ] = useState(null);
+  const {
+    nombreCompleto,
+    genero,
+    tipoSangre,
+    edad,
+    estatura,
+    peso,
+    email,
+    numeroDocumento,
+    estadoCivil,
+    direccion,
+    telefono1,
+    telefono2,
+    numeroEmergencia,
+    EPS,
+    consultaMedica,
+    tratamientoMedico,
+    radiografias,
+    motivoConsulta,
+    enfermedadActual,
+    antDiabetes,
+    antCancer,
+    antLeucemia,
+    antCardiopatias,
+    alergia,
+    diabetes,
+    cancer,
+    leucemia,
+    cardiopatias,
+    cirugias,
+    hospitalarios,
+    psicologicos,
+    HTA,
+    consentimiento,
+  } = formData;
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
   const [open, setOpen] = useState(false);
   const history = useHistory();
 
@@ -63,15 +90,41 @@ export default function Revision({ formData, navigation }) {
         .set(
           {
             fechaCreacion: firebase.firestore.FieldValue.serverTimestamp(),
+            avatar: `https://www.gravatar.com/avatar/${hash}?d=identicon`,
             nombreCompleto: nombreCompleto,
             nombreBusqueda: nombreCompleto.trim().toLowerCase(),
-            edad: edad,
-            email: email,
             genero: genero,
             tipoSangre: tipoSangre,
+            edad: edad,
+            estatura: estatura,
+            peso: peso,
+            email: email,
+            numeroDocumento: numeroDocumento,
+            estadoCivil: estadoCivil,
+            direccion: direccion,
+            telefono1: telefono1,
+            telefono2: telefono2 || "NO",
+            numeroEmergencia: numeroEmergencia,
+            EPS: EPS || "NO",
+            consultaMedica: consultaMedica || "NO",
+            tratamientoMedico: tratamientoMedico,
+            radiografias: radiografias || "NO",
             motivoConsulta: motivoConsulta,
+            enfermedadActual: enfermedadActual,
+            antDiabetes: antDiabetes || "NO",
+            antCancer: antCancer || "NO",
+            antLeucemia: antLeucemia || "NO",
+            antCardiopatias: antCardiopatias || "NO",
+            alergia: alergia,
+            diabetes: diabetes,
+            cancer: cancer,
+            leucemia: leucemia,
+            cardiopatias: cardiopatias,
+            cirugias: cirugias || "NO",
+            hospitalarios: hospitalarios || "NO",
+            psicologicos: psicologicos || "NO",
+            HTA: HTA,
             consentimiento: consentimiento,
-            avatar: `https://www.gravatar.com/avatar/${hash}?d=identicon`,
           },
           { merge: true }
         );
@@ -85,6 +138,7 @@ export default function Revision({ formData, navigation }) {
   };
 
   const { user } = useAuth();
+
   if (!user) {
     return <Redirect to="/" />;
   }
@@ -99,19 +153,55 @@ export default function Revision({ formData, navigation }) {
           go={go}
           details={[
             {
-              "Nombre Completo": nombreCompleto,
+              "Nombre Completo: ": nombreCompleto,
             },
             {
-              Edad: edad,
+              "Genero: ": genero,
             },
             {
-              "Correo electronico": email,
+              "Tipo de sangre: ": tipoSangre,
             },
             {
-              Genero: genero,
+              "Edad: ": edad,
             },
             {
-              "Tipo de sangre": tipoSangre,
+              "Estatura: ": estatura,
+            },
+            {
+              "Peso: ": peso,
+            },
+            {
+              "Correo electronico: ": email,
+            },
+            {
+              "Numero de identificacion: ": numeroDocumento,
+            },
+            {
+              "Estado civil: ": estadoCivil,
+            },
+            {
+              "Direccion: ": direccion,
+            },
+            {
+              "Telefono 1: ": telefono1,
+            },
+            {
+              "Telefono 2: ": telefono2,
+            },
+            {
+              "Numero de emergencia: ": numeroEmergencia,
+            },
+            {
+              "EPS: ": EPS,
+            },
+            {
+              "En el ultimo año ha consultado a su medico?:": consultaMedica,
+            },
+            {
+              "Actualmente esta en tratamiento medico?: ": tratamientoMedico,
+            },
+            {
+              "Posee radiografias actualizadas?: ": radiografias,
             },
           ]}
         />
@@ -122,6 +212,20 @@ export default function Revision({ formData, navigation }) {
             {
               "Motivo de la consulta": motivoConsulta,
             },
+            { "Enfermedad actual: ": enfermedadActual },
+            { "Antecedente familiar de diabetes: ": antDiabetes },
+            { "Antecedente familiar de cancer: ": antCancer },
+            { "Antecedente familiar de leucemia: ": antLeucemia },
+            { "Antecedente familiar de cardiopatias: ": antCardiopatias },
+            { "Alergia/s: ": alergia },
+            { "Antecedente personal de diabetes: ": diabetes },
+            { "Antecedente personal de cancer: ": cancer },
+            { "Antecedente personal de leucemia: ": leucemia },
+            { "Antecedente personal de cardiopatias: ": cardiopatias },
+            { "Antecedente personal de cirugias: ": cirugias },
+            { "Antecedente personal de hospitalarios: ": hospitalarios },
+            { "Antecedente personal de psicologicos: ": psicologicos },
+            { "Antecedente personal de HTA:": HTA },
           ]}
         />
         <RenderAccordion
@@ -129,7 +233,7 @@ export default function Revision({ formData, navigation }) {
           go={go}
           details={[
             {
-              "Acepto el consentimiento": consentimiento,
+              "Acepto el consentimiento: ": consentimiento,
             },
           ]}
         />
@@ -164,14 +268,23 @@ export default function Revision({ formData, navigation }) {
 
 export const RenderAccordion = ({ summary, details, go }) => (
   <Accordion>
-    <AccordionSummary expandIcon={<ExpandMoreIcon />}>{summary}</AccordionSummary>
+    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+      <h5>{summary}</h5>
+    </AccordionSummary>
     <AccordionDetails>
       <div>
         {details.map((data, index) => {
           const objKey = Object.keys(data)[0];
           const objValue = data[Object.keys(data)[0]];
 
-          return <ListItemText key={index}>{`${objKey}: ${objValue}`}</ListItemText>;
+          return (
+            <ListItemText className="w-100" key={index}>
+              <div className="w-100">
+                <h6>{objKey}</h6>
+                <p>{objValue}</p>
+              </div>
+            </ListItemText>
+          );
         })}
         <IconButton
           onClick={() => {

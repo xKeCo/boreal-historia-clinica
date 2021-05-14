@@ -13,10 +13,8 @@ export default function App() {
     <AuthContextProvider>
       <BrowserRouter>
         <Switch>
-          {/* <Route exact path="/home" component={Home} /> */}
           <Route exact path="/" component={Home} />
-          {/* <Route exact path="/inicio" component={Home} /> */}
-          <Route exact path="/crear" component={AddPatient} />
+          <Route exact path="/nuevo" component={AddPatient} />
           <Route exact path="/perfil/:id" component={PerfilUsuario} />
           <Route component={PageNotFound} />
         </Switch>

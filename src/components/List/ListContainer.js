@@ -23,6 +23,7 @@ export default function ListContainer() {
       await database
         .collection("clientes")
         .orderBy("fechaCreacion", "desc")
+        .limit(10)
         .onSnapshot((querysnapshot) => {
           const docs = [];
           setLoading(true);
@@ -44,7 +45,7 @@ export default function ListContainer() {
     <>
       <Searchbar setData={setData} />
       <div className="AñadirPaciente-container">
-        <Link to="crear" className="text-decoration-none text-dark">
+        <Link to="/nuevo" className="text-decoration-none text-dark">
           <Button
             type="input"
             variant="contained"

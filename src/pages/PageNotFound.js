@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 // Estilos CSS
 // import "./styles/styles.css";
+import "./styles/PageNotFound.css";
 import "bootstrap/dist/css/bootstrap.css";
 // GIF Importado
 import GIF from "../images/404GIF";

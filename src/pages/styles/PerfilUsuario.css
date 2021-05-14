@@ -1,0 +1,100 @@
+/* Perfil Usuario  */
+
+.datos-usuario_container {
+  max-width: 1300px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  align-items: center;
+}
+
+.UserImage_container .Avatar {
+  width: 150px !important;
+  height: 150px !important;
+}
+.UserImage_container {
+  margin-right: 4rem;
+  margin-left: 4rem;
+}
+.UserInformation_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 70%;
+  width: 100%;
+}
+.Button-volver {
+  padding: 0.875em 15%;
+}
+/* Perfil Usuario END */
+
+/* Media Queries */
+
+@media screen and (max-width: 1530px) {
+  .Button-volver {
+    padding: 0.875em 10%;
+  }
+}
+@media screen and (max-width: 1240px) {
+  .Button-volver {
+    padding: 0.875em 7%;
+  }
+}
+@media screen and (max-width: 943px) {
+  .UserInformation_container {
+    max-width: 85%;
+    margin-top: 2rem;
+  }
+
+  .UserInformation_container .MuiListItem-root {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .Avatar-Name {
+    display: none;
+  }
+  .todo_encuesta_container {
+    padding: 0.85em 10%;
+  }
+  .Button-volver {
+    padding: 0.85em 7%;
+    text-align: center;
+  }
+  .button-1 {
+    margin: 0 auto !important;
+    width: 86% !important;
+  }
+  .button-1 {
+    margin: 0 auto !important;
+    /* width: 86% !important; */
+  }
+  .MuiTypography-body1 {
+    font-size: 14px !important;
+  }
+
+  .sideMenu-Item-emprendedor .MuiTypography-body1 {
+    font-size: 14px !important;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+
+  .Novedades_container {
+    border: none;
+    border-bottom: 0.7px solid #eaeaea;
+    border-radius: 0;
+  }
+
+  .UserInformation_container {
+    grid-template-columns: 1fr;
+  }
+
+  .UserInformation_container .MuiList-root {
+    width: unset;
+  }
+  .UserInformation_container {
+    max-width: 100%;
+  }
+}
