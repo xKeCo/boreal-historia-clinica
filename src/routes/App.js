@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import PageNotFound from "../pages/PageNotFound";
 import AddPatient from "../pages/AddPatient";
 import PerfilUsuario from "../pages/PerfilUsuario";
+import SaludUsuario from "../pages/SaludUsuario";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/nuevo" component={AddPatient} />
           <Route exact path="/perfil/:id" component={PerfilUsuario} />
+          <Route exact path="/salud/:id" component={SaludUsuario} />
           <Route component={PageNotFound} />
         </Switch>
       </BrowserRouter>

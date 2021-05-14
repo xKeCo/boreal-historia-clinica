@@ -49,7 +49,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function PerfilUsuario(props) {
+export default function SaludUsuario(props) {
   const { userData } = useAuth();
   const [Data, setData] = useState([]);
   const [Loading, setLoading] = useState(true);
@@ -58,7 +58,7 @@ export default function PerfilUsuario(props) {
   const id = props.match.params.id;
 
   useEffect(() => {
-    document.title = "Sinapsis UAO - Perfil";
+    document.title = "Sinapsis UAO - Salud";
     getDataCliente();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -143,25 +143,11 @@ export default function PerfilUsuario(props) {
                           alt={"Avatar"}
                           className="User-Avatar_container"
                         />
-                        {Data.rol === "emprendedor" && (
-                          <div className="FirstLogin_button_container mt-4">
-                            <div>
-                              <Link
-                                to={`/emprendimientos/${id}`}
-                                className=" text-decoration-none items-dropdown"
-                              >
-                                <Button
-                                  type="input"
-                                  variant="contained"
-                                  className="button-1"
-                                  color="primary"
-                                >
-                                  Emprendimientos
-                                </Button>
-                              </Link>
-                            </div>
+                        <div className="FirstLogin_button_container mt-4">
+                          <div>
+                            <h6 className="text-center">{Data.motivoConsulta}</h6>
                           </div>
-                        )}
+                        </div>
                       </div>
                       <div className="UserInformation_container">
                         <List disablePadding className="RevisarAutodiagnostico-List mb-3">
@@ -250,7 +236,10 @@ export default function PerfilUsuario(props) {
                         </div>
                         <div className="FirstLogin_button_container mr-3 ml-3 mt-4">
                           <div>
-                            <Link to="/home" className=" text-decoration-none items-dropdown">
+                            <Link
+                              to={`/salud/${id}`}
+                              className=" text-decoration-none items-dropdown"
+                            >
                               <Button
                                 type="input"
                                 variant="contained"
