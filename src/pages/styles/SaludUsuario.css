@@ -20,7 +20,7 @@
 .UserInformation_container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-width: 70%;
+  max-width: 90%;
   width: 100%;
 }
 .Button-volver {

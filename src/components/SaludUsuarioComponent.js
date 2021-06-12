@@ -68,14 +68,14 @@ export default function SaludUsuarioComponent({ id, Data }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className="ml-3">
-        <Link to="/" className="nav-item text-decoration-none items-dropdown">
-          <ListItem className="sideMenu-Item-emprendedor">
-            <ListItemIcon>
-              <PlaylistAddIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Crear nuevo reporte"} />
-          </ListItem>
-        </Link>
+        {/* <Link to="/" className="nav-item text-decoration-none items-dropdown"> */}
+        <ListItem className="sideMenu-Item-emprendedor">
+          <ListItemIcon>
+            <PlaylistAddIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Crear nuevo reporte"} />
+        </ListItem>
+        {/* </Link> */}
       </List>
     </div>
   );
@@ -185,17 +185,18 @@ export default function SaludUsuarioComponent({ id, Data }) {
                 <div className={classes.buttonsContainer}>
                   <div className="FirstLogin_button_container ml-3 mr-3 mt-4">
                     <div>
-                      <Link to={`/reporte/${id}`} className=" text-decoration-none items-dropdown">
-                        <Button
-                          type="input"
-                          variant="contained"
-                          className="button-0"
-                          color="primary"
-                          endIcon={<AssignmentIcon />}
-                        >
-                          Reporte
-                        </Button>
-                      </Link>
+                      {/* <Link to={`/reporte/${id}`} className=" text-decoration-none items-dropdown"> */}
+                      <Button
+                        type="input"
+                        variant="contained"
+                        className="button-0"
+                        color="primary"
+                        endIcon={<AssignmentIcon />}
+                        disabled
+                      >
+                        Reporte
+                      </Button>
+                      {/* </Link> */}
                     </div>
                   </div>
                   <div className="FirstLogin_button_container mr-3 ml-3 mt-4">

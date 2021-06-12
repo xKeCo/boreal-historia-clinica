@@ -64,14 +64,14 @@ export default function PerfilUsuarioComponent({ id, Data }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className="ml-3">
-        <Link to="/" className="nav-item text-decoration-none items-dropdown">
-          <ListItem className="sideMenu-Item-emprendedor">
-            <ListItemIcon>
-              <PlaylistAddIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Crear nuevo reporte"} />
-          </ListItem>
-        </Link>
+        {/* <Link to="/" className="nav-item text-decoration-none items-dropdown"> */}
+        <ListItem className="sideMenu-Item-emprendedor">
+          <ListItemIcon>
+            <PlaylistAddIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Crear nuevo reporte"} />
+        </ListItem>
+        {/* </Link> */}
       </List>
     </div>
   );
@@ -85,7 +85,7 @@ export default function PerfilUsuarioComponent({ id, Data }) {
           <div className="UserImage_container">
             <Avatar src={Data.avatar} alt={"Avatar"} className="User-Avatar_container" />
             <div className="FirstLogin_button_container mt-4">
-              <div>
+              <div className=" mt-2 mb-2">
                 <h6 className="text-center">{Data.motivoConsulta}</h6>
               </div>
             </div>
@@ -159,17 +159,18 @@ export default function PerfilUsuarioComponent({ id, Data }) {
           <>
             <div className="FirstLogin_button_container ml-3 mr-3 mt-4">
               <div>
-                <Link to={`/reporte/${id}`} className=" text-decoration-none items-dropdown">
-                  <Button
-                    type="input"
-                    variant="contained"
-                    className="button-0"
-                    color="primary"
-                    endIcon={<AssignmentIcon />}
-                  >
-                    Reporte
-                  </Button>
-                </Link>
+                {/* <Link to={`/reporte/${id}`} className=" text-decoration-none items-dropdown"> */}
+                <Button
+                  type="input"
+                  variant="contained"
+                  className="button-0"
+                  color="primary"
+                  endIcon={<AssignmentIcon />}
+                  disabled
+                >
+                  Reporte
+                </Button>
+                {/* </Link> */}
               </div>
             </div>
             <div className="FirstLogin_button_container mr-3 ml-3 mt-4">
@@ -218,6 +219,7 @@ export default function PerfilUsuarioComponent({ id, Data }) {
                   className="button-0"
                   color="primary"
                   endIcon={<EditIcon />}
+                  disabled
                 >
                   Editar Perfil
                 </Button>
